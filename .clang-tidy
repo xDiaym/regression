@@ -1,0 +1,10 @@
+---
+Checks:          'clang-analyzer-*,readability-redundant-*,performance-*,readability-container*'
+WarningsAsErrors: 'clang-analyzer-*,readability-redundant-*,performance-*,readability-container*'
+HeaderFilterRegex: '.*'
+AnalyzeTemporaryDtors: false
+FormatStyle:     none
+User:            user
+
+CheckOptions:
+  readability-redundant-access-specifiers: false
