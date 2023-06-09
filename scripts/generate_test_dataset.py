@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-import numpy as np
 import csv
+import numpy as np
+
 
 N, a, b = 100, 1.2, 0.3
 np.random.seed(42)
