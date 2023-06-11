@@ -1,4 +1,5 @@
 .idea/
 cmake-build-*/
-dataset.csv/
+dataset.csv
 third_party/
+perf.data
