@@ -12,8 +12,11 @@ public:
   Vec2 fit() const noexcept;
 
 private:
-  Mat2x2 coefficients() const noexcept;
-  Vec2 freeTerms() const noexcept;
-
+  struct params {
+    Mat2x2 coefficients;
+    Vec2 freeTerms;
+  };
+  params calculateParams() const noexcept;
+  
   dataset dataset_;
 };

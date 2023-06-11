@@ -16,7 +16,7 @@ static void BM_dataset_loading(benchmark::State& state) {
     benchmark::DoNotOptimize(loader);
   }
 }
-BENCHMARK(BM_dataset_loading);
+//BENCHMARK(BM_dataset_loading);
 
 static void BM_model_fit(benchmark::State& state) {
   CSVLoader loader("../dataset.csv");
