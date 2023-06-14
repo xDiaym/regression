@@ -3,16 +3,23 @@ project(linear_regression)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-find_program(CCACHE_EXECUTABLE ccache)
-if (CCACHE_EXECUTABLE)
-    message(STATUS "ccache: enabled")
-    set(CMAKE_C_COMPILER_LAUNCHER ${CCACHE_EXECUTABLE})
-    set(CMAKE_CXX_COMPILER_LAUNCHER ${CCACHE_EXECUTABLE})
-endif ()
-
+include(cmake/SetupCCache.cmake)
 include(cmake/CompilerOptions.cmake)
-include(cmake/SetupGBench.cmake)
+include(cmake/SetupLTO.cmake)
 
-include_directories(include)
-add_executable(linear_regression src/linalg.cpp src/regression.cpp src/dataloader.cpp benchmark/bench_dataset_traverse.cpp)
-target_link_libraries(linear_regression benchmark::benchmark)
+
+add_library(${PROJECT_NAME}
+    STATIC
+        src/linalg.cpp
+        src/regression.cpp
+        src/dataloader.cpp
+)
+set_target_properties(${PROJECT_NAME} PROPERTIES LINKER_LANGUAGE CXX)
+target_include_directories(${PROJECT_NAME} PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+        PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/src
+)
+
+
+include(cmake/SetupBenchmarks.cmake)

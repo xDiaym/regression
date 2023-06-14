@@ -1,0 +1,8 @@
+find_program(CCACHE_EXECUTABLE ccache)
+if (CCACHE_EXECUTABLE)
+    message(STATUS "ccache: enabled")
+    set(CMAKE_C_COMPILER_LAUNCHER ${CCACHE_EXECUTABLE})
+    set(CMAKE_CXX_COMPILER_LAUNCHER ${CCACHE_EXECUTABLE})
+else ()
+    message(STATUS "ccache: disabled")
+endif ()

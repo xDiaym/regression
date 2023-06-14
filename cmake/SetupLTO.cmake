@@ -1,0 +1,16 @@
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(LTO_FLAG FALSE)
+else ()
+    set(LTO_FLAG TRUE)
+endif ()
+
+option(REGRESSION_LTO "Use link time optimizations" ${LTO_FLAG})
+
+if(NOT LTO_FLAG AND NOT REGRESSION_LTO)
+    message(STATUS "LTO: disabled (local build)")
+elseif(NOT REGRESSION_LTO)
+    message(STATUS "LTO: disabled (user request)")
+else()
+    message(STATUS "LTO: on")
+    set(CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE)
+endif()
