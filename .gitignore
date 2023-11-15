@@ -1,5 +1,6 @@
 .idea/
-cmake-build-*/
+.vscode/
+*build*/
 /*.csv
 third_party/
 perf.data
